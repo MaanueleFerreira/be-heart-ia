@@ -24,11 +24,30 @@ const AssessForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    const numericSelects = ['sex', 'cp', 'fbs', 'restecg', 'exng', 'thall'];
+
+    const finalValue = numericSelects.includes(name) ? Number(value) : value;
+
+    setFormData((prev) => ({ ...prev, [name]: finalValue }));
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    for (const [key, value] of Object.entries(formData)) {
+      if (value === '') {
+        alert(`O campo "${key}" está vazio.`);
+        return;
+      }
+
+      if (value <= 0) {
+        alert(`O campo "${key}" deve ser maior que zero.`);
+        return;
+      }
+    }
+
 
     // Simulação do retorno da IA — substitua depois por fetch/axios
     const simulatedResult = {
@@ -39,8 +58,6 @@ const AssessForm = () => {
     setResult(simulatedResult);
   };
 
-
-  // fazer validação de apenas numero e verificar se quando o user digita o numero, é interpretado como numero mesmo.
   return (
     <section id="form" className="bg-slate-50 py-20 px-10 md:px-40 md:mt-20 mx-auto">
       <div className="text-center mb-12">
