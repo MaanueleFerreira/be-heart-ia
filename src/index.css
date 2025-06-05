@@ -11,26 +11,6 @@
   --text-details: #4D4D4D;
 }
 
-.text-primary {
-  color: var(--text-primary);
-}
-
-.text-details {
-  color: var(--text-details);
-}
-
-.text-lightred {
-  color: var(--lightred);
-}
-
-.red-dark-details{
-  color: var(--darkred);
-}
-
-.bg-biege {
-  background-color: var(--biege);
-}
-
 body {
   font-family: "Lato", sans-serif;
   color: var(--text-primary);

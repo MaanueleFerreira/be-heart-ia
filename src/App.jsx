@@ -1,7 +1,8 @@
 import Header from "./components/Header"
 import HeroSection from "./components/HeroSection"
 import MissionSection from "./components/MissionSection"
-import StepByStep from "./components/SetepBySetep"
+import AssessForm from "./components/AcessForm"
+import Footer from "./components/Footer"
 
 function App() {
 
@@ -10,7 +11,8 @@ function App() {
     <Header />
     <HeroSection />
     <MissionSection />
-    <StepByStep />
+    <AssessForm />
+    <Footer />
 
     </>
   )
