@@ -41,13 +41,7 @@ const AssessForm = () => {
         alert(`O campo "${key}" está vazio.`);
         return;
       }
-
-      if (value <= 0) {
-        alert(`O campo "${key}" deve ser maior que zero.`);
-        return;
-      }
     }
-
 
     // Simulação do retorno da IA — substitua depois por fetch/axios
     const simulatedResult = {
