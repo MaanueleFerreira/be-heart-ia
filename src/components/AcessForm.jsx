@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ResultCard from "./ResultCard";
 import InputTypeNumber from "./InputTypeNumber";
+import getData from "../services/requests";
 
 const initialState = {
   age: "",
@@ -33,20 +34,29 @@ const AssessForm = () => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    for (const [key, value] of Object.entries(formData)) {
-      if (value === '') {
-        alert(`O campo "${key}" está vazio.`);
-        return;
-      }
-    }
+    const result = await getData({
+    "age": formData.age,
+    "sex": formData.sex,
+    "cp": formData.cp,
+    "trtbps": formData.trtbps,
+    "chol": formData.chol,
+    "fbs": formData.fbs,
+    "restecg": formData.restecg,
+    "thalachh": formData.thalachh,
+    "exng": formData.exng,
+    "oldpeak": formData.oldpeak,
+    "slp": formData.slp,
+    "caa": formData.caa,
+    "thall": formData.thall
+});
 
     // Simulação do retorno da IA — substitua depois por fetch/axios
     const simulatedResult = {
-      risk: "High",
-      accuracy: 89.4,
+      risk: result.predicao,
+      accuracy: result.confianca,
     };
 
     setResult(simulatedResult);
@@ -72,7 +82,7 @@ const AssessForm = () => {
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1121F]"
           >
-            <option value="">Select an option</option>
+            <option value="" disabled>Select an option</option>
             <option value="0">Feminine</option>
             <option value="1">Masculine</option>
           </select>
@@ -87,7 +97,7 @@ const AssessForm = () => {
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1121F]"
           >
-            <option value="">Select an option</option>
+            <option value="" disabled>Select an option</option>
             <option value="0">1</option>
             <option value="1">2</option>
             <option value="2">3</option>
@@ -108,7 +118,7 @@ const AssessForm = () => {
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1121F]"
           >
-            <option value="">Select an option</option>
+            <option value="" disabled>Select an option</option>
             <option value="0">120 mg/dl or below</option>
             <option value="1">Above 120 mg/dl</option>
           </select>
@@ -123,7 +133,7 @@ const AssessForm = () => {
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1121F]"
           >
-            <option value="">Select an option</option>
+            <option value="" disabled>Select an option</option>
             <option value="0"> 0 </option>
             <option value="1"> 1 </option>
             <option value="2"> 2 </option>
@@ -141,7 +151,7 @@ const AssessForm = () => {
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1121F]"
           >
-            <option value="">Select an option</option>
+            <option value="" disabled>Select an option</option>
             <option value="0"> No </option>
             <option value="1"> Yes </option>
           </select>
@@ -162,7 +172,7 @@ const AssessForm = () => {
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#C1121F]"
           >
-            <option value="">Select an option</option>
+            <option value="" disabled>Select an option</option>
             <option value="0"> Normal </option>
             <option value="1"> Fixed </option>
             <option value="2"> Reversible </option>
