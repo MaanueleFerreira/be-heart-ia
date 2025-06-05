@@ -176,7 +176,7 @@ const AssessForm = () => {
             <option value="0"> Normal </option>
             <option value="1"> Fixed </option>
             <option value="2"> Reversible </option>
-            <option value="3"> Falta esse </option>
+            <option value="3"> Unknown </option>
           </select>
         </div>
 
